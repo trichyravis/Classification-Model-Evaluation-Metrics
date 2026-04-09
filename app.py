@@ -1047,80 +1047,96 @@ elif page == "8️⃣ Finance Applications":
 elif page == "9️⃣ Q&A Practice":
     mp_header("Q&A Practice — Self-Assessment", "Test your understanding with 25 questions across 4 sections")
 
-    mp_card("💡 Try answering each question in your head <b>before</b> expanding to see the answer. "
+    mp_card("💡 Try answering each question in your head <b>before</b> clicking to reveal the answer. "
             "This active recall technique dramatically improves retention.")
 
     sections = {
         "Section A: Conceptual Foundations": [
-            ("Q1", "Why is it not enough to simply say \"the model is good\"? What do we need instead?",
+            ("Q1", "Why is it not enough to simply say &quot;the model is good&quot;? What do we need instead?",
              "We need concrete, quantifiable metrics that tell us how often the model is right, what kind of mistakes it makes, and whether it is better at catching positives or avoiding false alarms. In finance, wrong predictions have real, measurable costs."),
             ("Q2", "In a binary classifier predicting loan default, what are the four possible outcomes?",
-             "<b>TP:</b> Predicted default, actually defaulted (correct alarm).<br><b>TN:</b> Predicted no default, didn't default (correct quiet).<br><b>FP:</b> Predicted default, didn't default (false alarm).<br><b>FN:</b> Predicted no default, actually defaulted (missed alarm)."),
+             "<b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>TP:</b> Predicted default, actually defaulted (correct alarm).<br><b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>TN:</b> Predicted no default, didn&rsquo;t default (correct quiet).<br><b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>FP:</b> Predicted default, didn&rsquo;t default (false alarm).<br><b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>FN:</b> Predicted no default, actually defaulted (missed alarm)."),
             ("Q3", "What is a Type I Error? Give the statistical definition and a practical example.",
-             "Type I Error = Rejecting the null hypothesis when it is actually true = <b>False Positive (FP)</b>. Example: A fire alarm goes off when there is no fire. In lending, flagging a good borrower as a defaulter."),
+             "Type I Error = Rejecting the null hypothesis when it is actually true = <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>False Positive (FP)</b>. Example: A fire alarm goes off when there is no fire. In lending, flagging a good borrower as a defaulter."),
             ("Q4", "What is a Type II Error? Why is it often considered more dangerous?",
-             "Type II Error = Failing to reject the null hypothesis when it is false = <b>False Negative (FN)</b>. It's often more dangerous because the real threat goes undetected — like a fire alarm staying silent during a fire, or a bank missing a borrower who will default."),
-            ("Q5", "What is the Confusion Matrix? Why is it the 'foundation' of model evaluation?",
-             "The Confusion Matrix is a 2×2 table organising TP, TN, FP, and FN counts. It is the foundation because <b>every single evaluation metric</b> (Accuracy, Precision, Recall, F1, etc.) is derived directly from these four values."),
+             "Type II Error = Failing to reject the null hypothesis when it is false = <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>False Negative (FN)</b>. It&rsquo;s often more dangerous because the real threat goes undetected &mdash; like a fire alarm staying silent during a fire, or a bank missing a borrower who will default."),
+            ("Q5", "What is the Confusion Matrix? Why is it the &lsquo;foundation&rsquo; of model evaluation?",
+             "The Confusion Matrix is a 2&times;2 table organising TP, TN, FP, and FN counts. It is the foundation because <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>every single evaluation metric</b> (Accuracy, Precision, Recall, F1, etc.) is derived directly from these four values."),
         ],
-        "Section B: Metrics & Calculations": [
+        "Section B: Metrics &amp; Calculations": [
             ("Q6", "Given TP=40, TN=130, FP=20, FN=10, calculate Accuracy. What does it mean?",
-             "Accuracy = (40+130)/(200) = 170/200 = <b>85%</b>. It means 85% of all predictions were correct."),
-            ("Q7", "What is the 'Accuracy Trap'? Give an example.",
-             "With imbalanced data, accuracy is misleading. If only 5 of 200 borrowers default, a model that ALWAYS predicts 'no default' achieves 195/200 = <b>97.5% accuracy</b> — yet catches <b>zero</b> defaulters!"),
+             "Accuracy = (40+130)/(200) = 170/200 = <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>85%</b>. It means 85% of all predictions were correct."),
+            ("Q7", "What is the &lsquo;Accuracy Trap&rsquo;? Give an example.",
+             "With imbalanced data, accuracy is misleading. If only 5 of 200 borrowers default, a model that ALWAYS predicts &lsquo;no default&rsquo; achieves 195/200 = <b style='color:#dc3545;-webkit-text-fill-color:#dc3545;'>97.5% accuracy</b> &mdash; yet catches <b style='color:#dc3545;-webkit-text-fill-color:#dc3545;'>zero</b> defaulters!"),
             ("Q8", "Calculate Precision from TP=40, FP=20. What question does Precision answer?",
-             "Precision = 40/(40+20) = 40/60 = <b>66.7%</b>. It answers: 'Of all borrowers the model flagged as defaulters, how many actually defaulted?'"),
+             "Precision = 40/(40+20) = 40/60 = <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>66.7%</b>. It answers: &lsquo;Of all borrowers the model flagged as defaulters, how many actually defaulted?&rsquo;"),
             ("Q9", "Calculate Recall from TP=40, FN=10. How does it differ from Precision?",
-             "Recall = 40/(40+10) = 40/50 = <b>80%</b>. While Precision asks about positive predictions, Recall asks: 'Of all who actually defaulted, how many did the model catch?'"),
+             "Recall = 40/(40+10) = 40/50 = <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>80%</b>. While Precision asks about positive predictions, Recall asks: &lsquo;Of all who actually defaulted, how many did the model catch?&rsquo;"),
             ("Q10", "Why does the F1 Score use the harmonic mean instead of the arithmetic mean?",
-             "The harmonic mean penalises extreme imbalances. Precision=1.0, Recall=0.01 → Arithmetic mean = 0.505 (looks decent), but F1 = 0.0198 (terrible!). The harmonic mean correctly reveals the model is useless."),
+             "The harmonic mean penalises extreme imbalances. Precision=1.0, Recall=0.01 &rarr; Arithmetic mean = 0.505 (looks decent), but F1 = 0.0198 (terrible!). The harmonic mean correctly reveals the model is useless."),
             ("Q11", "What is Specificity? How does it relate to FPR?",
-             "Specificity = TN/(TN+FP) = 130/150 = <b>86.7%</b>. FPR = 1 − Specificity = 13.3%. As Specificity increases, the false alarm rate decreases."),
+             "Specificity = TN/(TN+FP) = 130/150 = <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>86.7%</b>. FPR = 1 &minus; Specificity = 13.3%. As Specificity increases, the false alarm rate decreases."),
             ("Q12", "Explain the Precision-Recall trade-off with aggressive vs conservative models.",
-             "<b>Aggressive (low threshold):</b> High Recall, Low Precision — catches most defaulters but flags many good borrowers.<br><b>Conservative (high threshold):</b> High Precision, Low Recall — when it flags, it's usually right, but misses many."),
+             "<b style='color:#28a745;-webkit-text-fill-color:#28a745;'>Aggressive (low threshold):</b> High Recall, Low Precision &mdash; catches most defaulters but flags many good borrowers.<br><b style='color:#FFC107;-webkit-text-fill-color:#FFC107;'>Conservative (high threshold):</b> High Precision, Low Recall &mdash; when it flags, it&rsquo;s usually right, but misses many."),
         ],
-        "Section C: Advanced Topics & Curves": [
+        "Section C: Advanced Topics &amp; Curves": [
             ("Q13", "What does the ROC curve plot? What does each point represent?",
-             "ROC plots <b>TPR (Recall)</b> vs <b>FPR</b> at every possible threshold from 0 to 1. Each point represents a different trade-off between catching defaulters and false alarms at a specific threshold."),
+             "ROC plots <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>TPR (Recall)</b> vs <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>FPR</b> at every possible threshold from 0 to 1. Each point represents a different trade-off between catching defaulters and false alarms at a specific threshold."),
             ("Q14", "What does an AUC of 0.85 mean in plain English?",
-             "If you randomly pick one actual defaulter and one non-defaulter, there is an <b>85% chance</b> the model assigns a higher default probability to the actual defaulter."),
+             "If you randomly pick one actual defaulter and one non-defaulter, there is an <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>85% chance</b> the model assigns a higher default probability to the actual defaulter."),
             ("Q15", "When should you use a PR Curve instead of ROC?",
-             "Use PR Curve when the <b>positive class is rare</b> (fraud, default, disease). It ignores the large number of true negatives, giving a more informative picture for imbalanced datasets."),
+             "Use PR Curve when the <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>positive class is rare</b> (fraud, default, disease). It ignores the large number of true negatives, giving a more informative picture for imbalanced datasets."),
             ("Q16", "Why is threshold 0.50 not always optimal? Give two scenarios.",
-             "<b>Bank loan:</b> Missing defaulters is costly → lower threshold to ~0.30 to maximise Recall.<br><b>Spam filter:</b> Blocking legit email is costly → raise threshold to ~0.80 to maximise Precision."),
+             "<b style='color:#17a2b8;-webkit-text-fill-color:#17a2b8;'>Bank loan:</b> Missing defaulters is costly &rarr; lower threshold to ~0.30 to maximise Recall.<br><b style='color:#28a745;-webkit-text-fill-color:#28a745;'>Spam filter:</b> Blocking legit email is costly &rarr; raise threshold to ~0.80 to maximise Precision."),
             ("Q17", "What is MCC and why is it great for imbalanced datasets?",
-             "MCC ranges from −1 to +1 and uses <b>all four</b> confusion matrix values. Unlike Accuracy, it can't be fooled by class imbalance. +1 = perfect, 0 = random, −1 = total disagreement."),
+             "MCC ranges from &minus;1 to +1 and uses <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>all four</b> confusion matrix values. Unlike Accuracy, it can&rsquo;t be fooled by class imbalance. +1 = perfect, 0 = random, &minus;1 = total disagreement."),
             ("Q18", "How does Log Loss differ from other metrics?",
-             "Log Loss evaluates <b>probability estimate quality</b>, not just labels. A prediction of 0.95 for a non-defaulter receives a much heavier penalty than 0.55, because the model was very confident yet completely wrong."),
+             "Log Loss evaluates <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>probability estimate quality</b>, not just labels. A prediction of 0.95 for a non-defaulter receives a much heavier penalty than 0.55, because the model was very confident yet completely wrong."),
         ],
-        "Section D: Application & Scenario-Based": [
+        "Section D: Application &amp; Scenario-Based": [
             ("Q19", "A fraud system has Precision=95%, Recall=30%. Is this acceptable?",
-             "When it flags fraud, it's right 95% of the time — but it only catches <b>30%</b> of actual fraud. 70% goes undetected! Likely unacceptable. Need to lower the threshold to boost Recall."),
+             "When it flags fraud, it&rsquo;s right 95% of the time &mdash; but it only catches <b style='color:#dc3545;-webkit-text-fill-color:#dc3545;'>30%</b> of actual fraud. 70% goes undetected! Likely unacceptable. Need to lower the threshold to boost Recall."),
             ("Q20", "Which metric for an AML model and why?",
-             "<b>Recall.</b> The regulatory risk of missing suspicious activity is severe (fines, sanctions). Better to flag extra transactions for review than to miss actual money laundering."),
+             "<b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>Recall.</b> The regulatory risk of missing suspicious activity is severe (fines, sanctions). Better to flag extra transactions for review than to miss actual money laundering."),
             ("Q21", "Why does algorithmic trading focus on Precision?",
              "False buy/sell signals directly erode capital. Better to miss some profitable trades (lower Recall) than to act on bad signals (lower Precision)."),
             ("Q22", "A model has AUC = 0.52. What does this tell you?",
-             "AUC 0.52 is barely better than random (0.50). The model has essentially <b>no discriminating ability</b>. Investigate features, try different algorithms, check data quality. Do NOT deploy."),
+             "AUC 0.52 is barely better than random (0.50). The model has essentially <b style='color:#dc3545;-webkit-text-fill-color:#dc3545;'>no discriminating ability</b>. Investigate features, try different algorithms, check data quality. Do NOT deploy."),
             ("Q23", "Difference between F1, F2, and F0.5 scores?",
-             "<b>F1:</b> Equal weight (balanced).<br><b>F2:</b> Weights Recall higher (missing positives is costly).<br><b>F0.5:</b> Weights Precision higher (false alarms are costly)."),
-            ("Q24", "1,000 applicants, 20 actual defaults. Model predicts 'no default' for everyone. Calculate Accuracy, Recall, Precision.",
-             "Accuracy = 980/1000 = <b>98%</b>. Recall = 0/20 = <b>0%</b>. Precision = 0/0 = <b>undefined</b>. Classic Accuracy Trap — 98% accuracy but completely useless!"),
-            ("Q25", "Basel IRB requires AUC + Calibration. Why isn't AUC enough?",
-             "AUC measures <b>discrimination</b> (ranking), not <b>calibration</b> (probability accuracy). A model could rank perfectly (AUC=1.0) but predict 50% PD when true rate is 2%. Regulators need both for capital calculations."),
+             "<b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>F1:</b> Equal weight (balanced).<br><b style='color:#17a2b8;-webkit-text-fill-color:#17a2b8;'>F2:</b> Weights Recall higher (missing positives is costly).<br><b style='color:#FFC107;-webkit-text-fill-color:#FFC107;'>F0.5:</b> Weights Precision higher (false alarms are costly)."),
+            ("Q24", "1,000 applicants, 20 actual defaults. Model predicts &lsquo;no default&rsquo; for everyone. Calculate Accuracy, Recall, Precision.",
+             "Accuracy = 980/1000 = <b style='color:#dc3545;-webkit-text-fill-color:#dc3545;'>98%</b>. Recall = 0/20 = <b style='color:#dc3545;-webkit-text-fill-color:#dc3545;'>0%</b>. Precision = 0/0 = <b style='color:#dc3545;-webkit-text-fill-color:#dc3545;'>undefined</b>. Classic Accuracy Trap &mdash; 98% accuracy but completely useless!"),
+            ("Q25", "Basel IRB requires AUC + Calibration. Why isn&rsquo;t AUC enough?",
+             "AUC measures <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>discrimination</b> (ranking), not <b style='color:#FFD700;-webkit-text-fill-color:#FFD700;'>calibration</b> (probability accuracy). A model could rank perfectly (AUC=1.0) but predict 50% PD when true rate is 2%. Regulators need both for capital calculations."),
         ]
     }
 
     for section_name, questions in sections.items():
         mp_subheader(section_name)
+        qa_html = ""
         for qid, question, answer in questions:
-            with st.expander(f"{qid}: {question}"):
-                st.html(f"""
-                <div style="background:rgba(0,51,102,0.3);border:1px solid rgba(173,216,230,0.2);border-left:4px solid {GOLD};border-radius:8px;padding:16px 20px;margin:4px 0;user-select:none;">
-                    <div style="color:{GOLD};-webkit-text-fill-color:{GOLD};font-family:Source Sans 3,sans-serif;font-size:0.82rem;font-weight:600;margin-bottom:8px;letter-spacing:0.5px;">ANSWER</div>
-                    <div style="color:#e6f1ff;-webkit-text-fill-color:#e6f1ff;font-family:Source Sans 3,sans-serif;font-size:0.93rem;line-height:1.8;">{answer}</div>
+            qa_html += f"""
+            <details style="background:#112240;border:1px solid rgba(255,215,0,0.18);border-radius:10px;margin:8px 0;overflow:hidden;">
+                <summary style="padding:14px 20px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;user-select:none;">
+                    <span style="color:#FFD700;-webkit-text-fill-color:#FFD700;font-family:JetBrains Mono,monospace;font-size:0.82rem;font-weight:700;min-width:32px;">{qid}</span>
+                    <span style="color:#e6f1ff;-webkit-text-fill-color:#e6f1ff;font-family:Source Sans 3,sans-serif;font-size:0.92rem;line-height:1.5;">{question}</span>
+                    <span style="margin-left:auto;color:#FFD700;-webkit-text-fill-color:#FFD700;font-size:1.1rem;transition:transform 0.2s;">▶</span>
+                </summary>
+                <div style="padding:0 20px 16px 20px;border-top:1px solid rgba(255,215,0,0.12);">
+                    <div style="background:rgba(0,51,102,0.35);border-left:4px solid #FFD700;border-radius:0 8px 8px 0;padding:14px 18px;margin-top:12px;">
+                        <div style="color:#FFD700;-webkit-text-fill-color:#FFD700;font-family:Source Sans 3,sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:1px;margin-bottom:8px;">ANSWER</div>
+                        <div style="color:#e6f1ff;-webkit-text-fill-color:#e6f1ff;font-family:Source Sans 3,sans-serif;font-size:0.92rem;line-height:1.85;">{answer}</div>
+                    </div>
                 </div>
-                """)
+            </details>
+            """
+        st.html(f"""
+        <style>
+            details summary::-webkit-details-marker {{ display: none; }}
+            details[open] summary span:last-child {{ transform: rotate(90deg); }}
+        </style>
+        {qa_html}
+        """)
 
 
 # ══════════════════════════════════════════════════════════════
