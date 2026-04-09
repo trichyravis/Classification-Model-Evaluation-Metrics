@@ -674,7 +674,9 @@ elif page == "5️⃣ ROC Curve & AUC":
         tpr_vals[-1] = 1
         tpr_vals = np.sort(tpr_vals)
 
-    actual_auc = np.trapz(tpr_vals, fpr_vals)
+    # np.trapz removed in NumPy 2.0+; use np.trapezoid with fallback
+    _trapz = getattr(np, "trapezoid", None) or np.trapz
+    actual_auc = _trapz(tpr_vals, fpr_vals)
 
     # Determine quality label
     if actual_auc >= 0.90: qlabel, qcolor = "⭐ Excellent", GRN
