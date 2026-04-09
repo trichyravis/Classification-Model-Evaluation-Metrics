@@ -147,7 +147,36 @@ details[data-testid="stExpander"] {{
     border: 1px solid rgba(255,215,0,0.15) !important;
     border-radius: 10px !important;
 }}
+details[data-testid="stExpander"] summary {{
+    color: {GOLD} !important;
+    -webkit-text-fill-color: {GOLD} !important;
+}}
+details[data-testid="stExpander"] summary span {{
+    color: {GOLD} !important;
+    -webkit-text-fill-color: {GOLD} !important;
+}}
+details[data-testid="stExpander"] summary p {{
+    color: {GOLD} !important;
+    -webkit-text-fill-color: {GOLD} !important;
+}}
+details[data-testid="stExpander"] summary strong {{
+    color: {GOLD} !important;
+    -webkit-text-fill-color: {GOLD} !important;
+}}
 details[data-testid="stExpander"] * {{
+    color: {TXT} !important;
+    -webkit-text-fill-color: {TXT} !important;
+}}
+details[data-testid="stExpander"] svg {{
+    fill: {GOLD} !important;
+    stroke: {GOLD} !important;
+}}
+details[data-testid="stExpander"] [data-testid="stExpanderDetails"] {{
+    background: rgba(17,34,64,0.95) !important;
+}}
+details[data-testid="stExpander"] [data-testid="stExpanderDetails"] p,
+details[data-testid="stExpander"] [data-testid="stExpanderDetails"] span,
+details[data-testid="stExpander"] [data-testid="stExpanderDetails"] div {{
     color: {TXT} !important;
     -webkit-text-fill-color: {TXT} !important;
 }}
@@ -1085,10 +1114,11 @@ elif page == "9️⃣ Q&A Practice":
     for section_name, questions in sections.items():
         mp_subheader(section_name)
         for qid, question, answer in questions:
-            with st.expander(f"**{qid}:** {question}"):
+            with st.expander(f"{qid}: {question}"):
                 st.html(f"""
-                <div style="color:{TXT};-webkit-text-fill-color:{TXT};font-family:Source Sans 3,sans-serif;font-size:0.92rem;line-height:1.75;padding:4px 0;">
-                    {answer}
+                <div style="background:rgba(0,51,102,0.3);border:1px solid rgba(173,216,230,0.2);border-left:4px solid {GOLD};border-radius:8px;padding:16px 20px;margin:4px 0;user-select:none;">
+                    <div style="color:{GOLD};-webkit-text-fill-color:{GOLD};font-family:Source Sans 3,sans-serif;font-size:0.82rem;font-weight:600;margin-bottom:8px;letter-spacing:0.5px;">ANSWER</div>
+                    <div style="color:#e6f1ff;-webkit-text-fill-color:#e6f1ff;font-family:Source Sans 3,sans-serif;font-size:0.93rem;line-height:1.8;">{answer}</div>
                 </div>
                 """)
 
